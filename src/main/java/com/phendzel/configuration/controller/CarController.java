@@ -1,21 +1,21 @@
 package com.phendzel.configuration.controller;
 
-import com.phendzel.configuration.service.CarService;
+import com.phendzel.configuration.service.CarRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class CarController {
 
-    private final CarService carService;
+    private final CarRepository carRepository;
 
-    public CarController(CarService carService) {
-        this.carService = carService;
+    public CarController(CarRepository carRepository) {
+        this.carRepository = carRepository;
     }
 
     @GetMapping("cars/fixed")
     public void getAllFixedCars() {
-        carService.getAllFixedCars();
+        carRepository.getAllFixedCars();
     }
 
 }
