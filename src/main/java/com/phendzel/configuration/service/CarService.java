@@ -1,13 +1,13 @@
 package com.phendzel.configuration.service;
 
-import com.jooq.example.public_.tables.records.CarRecord;
+import com.phendzel.public_.tables.records.CarRecord;
 import org.jooq.DSLContext;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static com.jooq.example.public_.Tables.CAR;
-import static com.jooq.example.public_.Tables.ORDER;
+import static com.phendzel.public_.Tables.CAR;
+import static com.phendzel.public_.Tables.ORDER;
 
 @Service
 public class CarService {

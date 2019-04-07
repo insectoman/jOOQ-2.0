@@ -56,7 +56,7 @@
 				<artifactId>flyway-maven-plugin</artifactId>
 				<version>5.2.4</version>
 				<configuration>
-					<url>jdbc:h2:file:./target/foobar;AUTO_SERVER=TRUE</url>
+					<url>jdbc:h2:file:./target/db;AUTO_SERVER=TRUE</url>
 					<user>sa</user>
 				</configuration>
 				<dependencies>
@@ -88,17 +88,16 @@
 				<configuration>
 					<jdbc>
 						<driver>org.h2.Driver</driver>
-						<url>jdbc:h2:file:./target/foobar;AUTO_SERVER=TRUE</url>
+						<url>jdbc:h2:file:./target/db;AUTO_SERVER=TRUE</url>
 						<user>sa</user>
 					</jdbc>
 					<generator>
 						<database>
 							<name>org.jooq.meta.h2.H2Database</name>
 							<includes>.*</includes>
-							<inputSchema></inputSchema>
 						</database>
 						<target>
-							<packageName>com.jooq.example</packageName>
+							<packageName>com.phendzel</packageName>
 							<directory>target/generated-sources/jooq</directory>
 						</target>
 					</generator>
