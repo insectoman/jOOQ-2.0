@@ -102,6 +102,9 @@
                             <includes>.*</includes>
                             <excludes>information_schema.*</excludes>
                         </database>
+                        <generate>
+                            <javaTimeTypes>true</javaTimeTypes>
+                        </generate>
                         <target>
                             <packageName>com.phendzel</packageName>
                             <directory>target/generated-sources/jooq</directory>

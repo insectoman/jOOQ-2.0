@@ -77,10 +77,12 @@ INSERT INTO "order"
 (id, price, finished, finish_date, description, car_id)
 VALUES (1, NULL, FALSE, NULL, 'Cos stuka w lewym kole.', 1),
        (2, 1250.00, TRUE, '2017-02-12', 'Wymiana rozrzadu.', 2),
-       (3, 100.00, TRUE, '2015-10-01', 'Sprawdzenie stanu olejow.', 1);
+       (3, 2250.00, TRUE, '2016-03-12', 'Wymiana rozrzadu po raz drugi.', 2),
+       (4, 100.00, TRUE, '2015-10-01', 'Sprawdzenie stanu olejow.', 1);
 
 INSERT INTO mechanic_order
 (id, order_id, mechanic_id)
 values (1, 1, 1),
        (2, 2, 1),
-       (3, 3, 1);
+       (3, 3, 1),
+       (4, 4, 1);

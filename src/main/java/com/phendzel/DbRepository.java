@@ -5,14 +5,15 @@ import lombok.AllArgsConstructor;
 import org.jooq.DSLContext;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
-import static com.phendzel.public_.Tables.CAR;
-import static com.phendzel.public_.Tables.ORDER;
+import static com.phendzel.public_.Tables.*;
+import static org.jooq.impl.DSL.count;
 
 @AllArgsConstructor
 @Repository
-class CarRepository {
+class DbRepository {
 
     private final DSLContext create;
 
@@ -65,6 +66,20 @@ class CarRepository {
 
     int[] saveNewCars(List<CarRecord> carRecords) {
         return create.batchStore(carRecords).execute();
+    }
+
+    List<MechanicWithNumberOfFixedCarsDTO> getMechanicsWhichFixedMoreThan2CarsIn2016(){
+        return create.select(MECHANIC.NAME, MECHANIC.SURNAME, count())
+                .from(MECHANIC)
+                .leftJoin(MECHANIC_ORDER).onKey()
+                .leftJoin(ORDER).onKey()
+                .leftJoin(CAR).onKey()
+                .where(CAR.BRAND.eq("Audi"))
+                .and(ORDER.FINISH_DATE.gt(LocalDate.of(2016, 1, 1)))
+                .groupBy(MECHANIC.NAME, MECHANIC.SURNAME)
+                .having(count().greaterThan(1))
+                .orderBy(MECHANIC.SURNAME)
+                .fetchInto(MechanicWithNumberOfFixedCarsDTO.class);
     }
 
 }

@@ -3,19 +3,18 @@ package com.phendzel;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @AllArgsConstructor
-@RestController
-public class CarController {
+@org.springframework.web.bind.annotation.RestController
+public class RestEndpoint {
 
-    private final CarRepository carRepository;
+    private final DbRepository dbRepository;
 
     @GetMapping("cars/fixed")
     public ResponseEntity getAllFixedCars() {
-        List<CarDTO> carDtos = CarMapper.mapToDtos(carRepository.getAllFixedCarsOnKey());
+        List<CarDTO> carDtos = Mapper.mapToDtos(dbRepository.getAllFixedCarsOnKey());
         return ResponseEntity.ok(carDtos);
     }
 
